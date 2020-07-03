@@ -18,26 +18,26 @@ public class Solution {
 
         Class[] classes = Collections.class.getDeclaredClasses();
 
-        for(Class currentClass: classes){
-            if(Modifier.isPrivate(currentClass.getModifiers())){
-                if(Modifier.isStatic(currentClass.getModifiers())){
-                    if(List.class.isAssignableFrom(currentClass)){
-                    try{
-                        Constructor constructor = currentClass.getDeclaredConstructor();
-                        constructor.setAccessible(true);
-                        List list = (List) constructor.newInstance();
-                        list.get(0);
-                    }catch (IndexOutOfBoundsException e){
-                        return currentClass;
-                    } catch (InstantiationException | NoSuchMethodException |
-                            InvocationTargetException | IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
+        for (Class currentClass : classes) {
+            if (Modifier.isPrivate(currentClass.getModifiers())) {
+                if (Modifier.isStatic(currentClass.getModifiers())) {
+                    if (List.class.isAssignableFrom(currentClass)) {
+                        try {
+                            Constructor constructor = currentClass.getDeclaredConstructor();
+                            constructor.setAccessible(true);
+                            List list = (List) constructor.newInstance();
+                            list.get(0);
+                        } catch (IndexOutOfBoundsException e) {
+                            return currentClass;
+                        } catch (InstantiationException | NoSuchMethodException |
+                                InvocationTargetException | IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
         }
 
-    return null;
+        return null;
     }
 }
