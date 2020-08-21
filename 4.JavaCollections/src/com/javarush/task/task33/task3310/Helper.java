@@ -4,11 +4,12 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 public class Helper {
-    public static String generateRandomString(){
+    public static String generateRandomString() {
         SecureRandom secureRandom = new SecureRandom();
-        return new BigInteger(666,secureRandom).toString(36);
+        return new BigInteger(666, secureRandom).toString(36);
     }
-    public static void printMessage(String message){
+
+    public static void printMessage(String message) {
         System.out.println(message);
     }
 
