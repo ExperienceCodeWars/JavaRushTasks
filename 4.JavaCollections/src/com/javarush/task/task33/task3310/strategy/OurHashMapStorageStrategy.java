@@ -56,7 +56,7 @@ public class OurHashMapStorageStrategy implements StorageStrategy {
         return k.hashCode();
     }
 
-    public int indexFor(int hash, int length) {
+     public int indexFor(int hash, int length) {
         return hash & (length - 1);
     }
 
