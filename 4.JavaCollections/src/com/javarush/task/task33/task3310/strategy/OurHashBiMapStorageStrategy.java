@@ -13,7 +13,7 @@ public class OurHashBiMapStorageStrategy implements StorageStrategy {
 
     @Override
     public boolean containsValue(String value) {
-        return v2k.containsValue(value);
+        return v2k.containsKey(value);
     }
 
     @Override
