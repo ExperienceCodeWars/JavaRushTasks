@@ -37,8 +37,7 @@ public class Entry implements Serializable {
         String currentValue = getValue();
         String comparableValue = ((Entry) o).getValue();
         if (currentKey == comparableKey || (currentKey != null && currentKey.equals(comparableKey))) {
-            if (currentValue == comparableValue || (currentValue != null && currentValue.equals(comparableValue)))
-                return true;
+            return currentValue == comparableValue || (currentValue != null && currentValue.equals(comparableValue));
         }
         return false;
     }

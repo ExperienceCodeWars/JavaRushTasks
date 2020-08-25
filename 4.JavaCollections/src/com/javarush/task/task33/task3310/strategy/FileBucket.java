@@ -33,7 +33,10 @@ public class FileBucket {
 
     public void putEntry(Entry entry) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(Files.newOutputStream(path))) {
-            objectOutputStream.writeObject(entry);
+            while (entry != null) {
+                objectOutputStream.writeObject(entry);
+                entry = entry.next;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

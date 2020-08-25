@@ -43,7 +43,7 @@ public class OurHashMapStorageStrategy implements StorageStrategy {
                 }
             }
         }
-        return null;
+        return 0L;
     }
 
     @Override
@@ -52,15 +52,15 @@ public class OurHashMapStorageStrategy implements StorageStrategy {
 
     }
 
-    int hash(Long k) {
+    public int hash(Long k) {
         return k.hashCode();
     }
 
-    int indexFor(int hash, int length) {
+    public int indexFor(int hash, int length) {
         return hash & (length - 1);
     }
 
-    Entry getEntry(Long key) {
+    public Entry getEntry(Long key) {
         if (size == 0)
             return null;
         int hash = key == null ? 0 : hash(key);
@@ -73,7 +73,7 @@ public class OurHashMapStorageStrategy implements StorageStrategy {
         return null;
     }
 
-    void resize(int newCapacity) {
+    public void resize(int newCapacity) {
         Entry[] oldTable = table;
         int oldCapacity = oldTable.length;
         if (oldCapacity == (1 << 30)) {
@@ -86,7 +86,7 @@ public class OurHashMapStorageStrategy implements StorageStrategy {
         threshold = (int) Math.min(newCapacity * loadFactor, (1 << 30) + 1);
     }
 
-    void transfer(Entry[] newTable) {
+    public void transfer(Entry[] newTable) {
         int newCapacity = newTable.length;
         for (Entry element : table) {
             while (element != null) {
